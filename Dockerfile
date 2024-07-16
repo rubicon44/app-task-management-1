@@ -4,8 +4,8 @@ RUN apt-get update && \
     apt-get install -y build-essential \
                        libmariadb-dev-compat
 
-RUN mkdir /rails-api-docker
-ENV APP_ROOT /rails-api-docker
+RUN mkdir /app-task-management-1
+ENV APP_ROOT /app-task-management-1
 WORKDIR $APP_ROOT
 
 ADD Gemfile $APP_ROOT/
