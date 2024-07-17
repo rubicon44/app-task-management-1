@@ -6,5 +6,18 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  namespace :v1 do
+    # 基本的なメソッドを一括で表したい場合
+    resources :users
+
+    # 特定のメソッドを使用しない場合
+    # resources :users, only: [:index, :show, :create]
+
+    # 個別にメソッドを定義したい場合
+    # get '/users', to: 'users#index'
+    # post '/users', to: 'users#create'
+    # get '/users/:id', to: 'users#show'
+    # patch '/users/:id', to: 'users#update'
+    # delete '/users/:id', to: 'users#destroy'
+  end
 end
