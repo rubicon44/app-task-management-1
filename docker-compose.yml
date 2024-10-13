@@ -21,6 +21,8 @@ services:
       DB_HOST: ${DB_HOST}
       FRONTEND_ORIGIN: ${FRONTEND_ORIGIN}
       RAILS_ENV: development
+      # TODO: 非推奨のため後ほど削除
+      THOR_SILENCE_DEPRECATION: true
     command: "bundle exec rails s -p 3000 -b 0.0.0.0"
     volumes:
       - .:/app-task-management-1

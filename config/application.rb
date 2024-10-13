@@ -28,5 +28,11 @@ module MyApp
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # stop default generate
+    config.generators do |g|
+      # TODO: Rspecを設定（falseのみは非推奨）
+      g.test_framework false
+    end
   end
 end
