@@ -1,8 +1,19 @@
 module V1
   class TasksController < ApiController
     def index
-      tasks = Task.all
-      render json: tasks
+      if params[:user_id] && params[:project_id]
+        user = User.find(params[:user_id])
+        project = user.projects.find_by(id: params[:project_id])
+
+        if project
+          tasks = project.tasks
+          render json: tasks
+        else
+          render json: { error: "Project not found" }, status: :not_found
+        end
+      else
+        render json: { error: "User ID and Project ID are required" }, status: :bad_request
+      end
     end
 
     def show
