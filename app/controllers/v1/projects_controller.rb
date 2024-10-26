@@ -1,8 +1,13 @@
 module V1
   class ProjectsController < ApiController
     def index
-      projects = Project.all
-      render json: projects
+      if params[:user_id]
+        user = User.find(params[:user_id])
+        projects = user.projects
+        render json: projects
+      else
+        render json: { error: "User ID is required" }, status: :bad_request
+      end
     end
 
     def show
