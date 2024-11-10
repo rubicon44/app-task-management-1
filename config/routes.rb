@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   namespace :v1 do
+    post '/auth/sign_in', to: 'auth#create'
     resources :users do
       resources :projects do
         resources :tasks
