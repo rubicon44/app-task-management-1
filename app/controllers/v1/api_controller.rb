@@ -17,7 +17,9 @@ module V1
           return
         end
 
-        requested_user_id = params[:id].to_i
+        requested_user_id = user.id
+
+        requested_user_id = params[:user_id].to_i
         if user.id != requested_user_id
           render_unauthorized('Unauthorized access to user information')
           return
