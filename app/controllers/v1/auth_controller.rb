@@ -15,8 +15,10 @@ module V1
         @firebase_id = @firebase_user['localId']
 
         token = generate_token(@firebase_id)
+        user = User.find_by(firebase_id: @firebase_id)
+        user_id = user.id
 
-        render json: { token: token }, status: :created
+        render json: { token: token, user_id: user_id }, status: :created
       else
         render json: { error: 'Invalid token' }, status: :unauthorized
       end
